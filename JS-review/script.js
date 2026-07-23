@@ -175,12 +175,34 @@ const updatedBook = {
 updatedBook;
 
 
+
+
+// 22. Arrow functions
+
+//function declaration
+/* function getYear(str){
+  return str.split("-")[0];
+} */
+const getYear = (str) => str.split('-')[0];
+console.log(getYear(publicationDate));
+
 // 20. Template literals.
 
-const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${publicationDate.split('-')[0]}. The book has ${hasMovieAdaptation ? '' : 'not'} been adapted as a movie`;
+const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${getYear(publicationDate)}. The book has ${hasMovieAdaptation ? '' : 'not'} been adapted as a movie`;
 summary
 // 21. Ternaries Instead of if/else statements
 
 const pagesRange = pages > 1000 ? 'over 1000' : 'less then 1000';
 console.log(`The book has ${pagesRange} pages`);
+
+
+
+
+
+// function expression
+/* const getYear = (str) => str.split('-')[0];
+console.log(getYear(publicationDate)); */
+
+
+
 

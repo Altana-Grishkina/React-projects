@@ -205,4 +205,25 @@ console.log(getYear(publicationDate)); */
 
 
 
+// 23 Short-circuiting and logical operators: &&, ||, ??
+
+console.log(true && 'Some string');
+console.log(false && 'Some string');
+console.log(hasMovieAdaptation && "This movie has a movie");
+
+//falsy: 0, '', null, underfined
+console.log('jonas' && 'some string');
+console.log(0 && 'some string');
+
+
+console.log(true || 'some string');
+console.log(false || 'some string');
+
+console.log(book.translations.spanish);
+
+const spanishTranslation = book.translations.spanish || 'Not translated';
+spanishTranslation
+
+console.log(book.reviews.librarything.reviewsCount);
+
 

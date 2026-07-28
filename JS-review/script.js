@@ -144,35 +144,35 @@ function getBook(id) {
 }
 
 // 18. Destructuring objects and arrays 
-const books = getBooks();
+// const books = getBooks();
 
-const book = getBook(3);
+// const book = getBook(3);
 
 // const title = book.title;
 // const author = book.author;
 
-const {title, author, pages, publicationDate, genres, hasMovieAdaptation} = book;
-console.log(title, author, genres);
+// const {title, author, pages, publicationDate, genres, hasMovieAdaptation} = book;
+// console.log(title, author, genres);
 
 // const primaryGenre = genres[0];
 // const secondaryGenre = genres[1];
 
 // 19. Rest/spread operator
 
-const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
-console.log(primaryGenre, secondaryGenre, otherGenres);
+// const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
+// console.log(primaryGenre, secondaryGenre, otherGenres);
 
-const newGenres = ["epic fantasy", ...genres];
-newGenres;
+// const newGenres = ["epic fantasy", ...genres];
+// newGenres;
 
-const updatedBook = {
-    ...book, 
-    // Adding a new propeerty
-    moviePublicationDate: '2001-12-19', 
-    // Overwriting an existing property
-    pages: 1210
-  }
-updatedBook;
+// const updatedBook = {
+//     ...book, 
+//     // Adding a new propeerty
+//     moviePublicationDate: '2001-12-19', 
+//     // Overwriting an existing property
+//     pages: 1210
+//   }
+// updatedBook;
 
 
 
@@ -182,56 +182,78 @@ updatedBook;
 //function declaration
 /* function getYear(str){
   return str.split("-")[0];
-} */
-const getYear = (str) => str.split('-')[0];
-console.log(getYear(publicationDate));
+// } */
+// const getYear = (str) => str.split('-')[0];
+// console.log(getYear(publicationDate));
 
-// 20. Template literals.
+// // 20. Template literals.
 
-const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${getYear(publicationDate)}. The book has ${hasMovieAdaptation ? '' : 'not'} been adapted as a movie`;
-summary
-// 21. Ternaries Instead of if/else statements
+// const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${getYear(publicationDate)}. The book has ${hasMovieAdaptation ? '' : 'not'} been adapted as a movie`;
+// summary
+// // 21. Ternaries Instead of if/else statements
 
-const pagesRange = pages > 1000 ? 'over 1000' : 'less then 1000';
-console.log(`The book has ${pagesRange} pages`);
-
-
+// const pagesRange = pages > 1000 ? 'over 1000' : 'less then 1000';
+// console.log(`The book has ${pagesRange} pages`);
 
 
 
-// function expression
-/* const getYear = (str) => str.split('-')[0];
-console.log(getYear(publicationDate)); */
+
+
+// // function expression
+// /* const getYear = (str) => str.split('-')[0];
+// console.log(getYear(publicationDate)); */
 
 
 
-// 23 Short-circuiting and logical operators: &&, ||, ??
+// // 23 Short-circuiting and logical operators: &&, ||, ??
 
-console.log(true && 'Some string');
-console.log(false && 'Some string');
-console.log(hasMovieAdaptation && "This movie has a movie");
+// console.log(true && 'Some string');
+// console.log(false && 'Some string');
+// console.log(hasMovieAdaptation && "This movie has a movie");
 
-//falsy: 0, '', null, underfined
-console.log('jonas' && 'some string');
-console.log(0 && 'some string');
+// //falsy: 0, '', null, underfined
+// console.log('jonas' && 'some string');
+// console.log(0 && 'some string');
 
 
-console.log(true || 'some string');
-console.log(false || 'some string');
+// console.log(true || 'some string');
+// console.log(false || 'some string');
 
-console.log(book.translations.spanish);
+// console.log(book.translations.spanish);
 
-const spanishTranslation = book.translations.spanish || 'Not translated';
-spanishTranslation;
+// const spanishTranslation = book.translations.spanish || 'Not translated';
+// spanishTranslation;
 
-/* console.log(book.reviews.librarything.reviewsCount);
-const countWrong = book.reviews.librarything.reviewsCount || "no data";
-countWrong;
+// /* console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount || "no data";
+// countWrong;
 
-const count = book.reviews.librarything.reviewsCount ??  "no data"
-count;
- */
-// 24. Optional Chaining
+// const count = book.reviews.librarything.reviewsCount ??  "no data"
+// count;
+//  */
+// // 24. Optional Chaining
+
+// function getTotalReviewCount(book){
+//   const goodreads = book.reviews?.goodreads?.reviewsCount;
+//   goodreads
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+//   return goodreads + librarything;
+// }
+
+// console.log(getTotalReviewCount(book));
+ 
+
+
+
+// 25. The array map method
+
+const books = getBooks();
+books
+const x = [1,2,3,4,5].map((el)=>el*2);
+console.log(x);
+
+const titles = books.map((book) => book.title);
+console.log(titles);
 
 function getTotalReviewCount(book){
   const goodreads = book.reviews?.goodreads?.reviewsCount;
@@ -240,5 +262,9 @@ function getTotalReviewCount(book){
   return goodreads + librarything;
 }
 
-console.log(getTotalReviewCount(book));
- 
+const essentialData = books.map((book) => ({
+    titles: book.title,
+    author: book.author,
+    reviews: getTotalReviewCount(book)
+}));
+essentialData

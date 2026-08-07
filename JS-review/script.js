@@ -247,87 +247,97 @@ function getBook(id) {
 
 // 25. The array map method
 
-const books = getBooks();
-books
-const x = [1,2,3,4,5].map((el)=>el*2);
-console.log(x);
+// const books = getBooks();
+// books
+// const x = [1,2,3,4,5].map((el)=>el*2);
+// console.log(x);
 
-const titles = books.map((book) => book.title);
-console.log(titles);
+// const titles = books.map((book) => book.title);
+// console.log(titles);
 
-function getTotalReviewCount(book){
-  const goodreads = book.reviews?.goodreads?.reviewsCount;
-  goodreads
-  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
-  return goodreads + librarything;
-}
+// function getTotalReviewCount(book){
+//   const goodreads = book.reviews?.goodreads?.reviewsCount;
+//   goodreads
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+//   return goodreads + librarything;
+// }
 
-const essentialData = books.map((book) => ({
-    titles: book.title,
-    author: book.author,
-    reviews: getTotalReviewCount(book)
-}));
-essentialData
-
-
-
-
-
-
-// 26. The Array filter Method
-
-const longBooksWithMovie = books
-          .filter(book => book.pages > 500)
-          .filter(book => book.hasMovieAdaptation);
-
-const adventureBooks = books
-  .filter((books) => books.genres.includes("adventure"))
-  .map((book) => book.title);
-adventureBooks
-
-
-
-
-
-// 27.  The Array reduce Method
-
-const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
-pagesAllBooks
+// const essentialData = books.map((book) => ({
+//     titles: book.title,
+//     author: book.author,
+//     reviews: getTotalReviewCount(book)
+// }));
+// essentialData
 
 
 
 
 
 
-// 28. The Array sort  Method
+// // 26. The Array filter Method
 
-const arr = [3, 7, 1, 9, 6];
-const sorted = arr.slice().sort((a, b) => a - b);
-sorted
-arr
+// const longBooksWithMovie = books
+//           .filter(book => book.pages > 500)
+//           .filter(book => book.hasMovieAdaptation);
 
-const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
-
-
-
-
+// const adventureBooks = books
+//   .filter((books) => books.genres.includes("adventure"))
+//   .map((book) => book.title);
+// adventureBooks
 
 
 
-// 29. Working With Immutable Arrays
 
-// 1. Add book object to array
-const newBook = {
-  id: 6,
-  title: 'Harry Potter and the Chamber of Secrets',
-  author: 'J. K. Rowling'
-};
 
-const booksAfterAdd = [...books, newBook];
+// // 27.  The Array reduce Method
 
-// 2. Delete book object from array
-const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+// const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
+// pagesAllBooks
 
-// 3. Update book object in the array
-const booksAfterUpdate = booksAfterDelete.map((book)=> book.id === 1 ? {...book, pages: 1210} : book);
-booksAfterUpdate
+
+
+
+
+
+// // 28. The Array sort  Method
+
+// const arr = [3, 7, 1, 9, 6];
+// const sorted = arr.slice().sort((a, b) => a - b);
+// sorted
+// arr
+
+// const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+
+
+
+
+
+
+
+// // 29. Working With Immutable Arrays
+
+// // 1. Add book object to array
+// const newBook = {
+//   id: 6,
+//   title: 'Harry Potter and the Chamber of Secrets',
+//   author: 'J. K. Rowling'
+// };
+
+// const booksAfterAdd = [...books, newBook];
+
+// // 2. Delete book object from array
+// const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+
+// // 3. Update book object in the array
+// const booksAfterUpdate = booksAfterDelete.map((book)=> book.id === 1 ? {...book, pages: 1210} : book);
+// booksAfterUpdate
+
+
+
+
+
+
+
+// 30. Async JavaScript: Promises.
+
+fetch('https://jsonplaceholder.typicode.com/todos').then((res)=>res.json()).then(data => console.log(data));

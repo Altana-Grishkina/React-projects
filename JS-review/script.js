@@ -340,4 +340,20 @@ function getBook(id) {
 
 // 30. Async JavaScript: Promises.
 
-fetch('https://jsonplaceholder.typicode.com/todos').then((res)=>res.json()).then(data => console.log(data));
+// fetch('https://jsonplaceholder.typicode.com/todos')
+//   .then((res)=>res.json())
+//   .then(data => console.log(data));
+
+
+// 31. Asyncronomous JavaScript: Async/Await
+
+async function getTodos(){
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+
+const todos = getTodos();
+getTodos();
+

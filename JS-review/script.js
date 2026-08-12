@@ -355,5 +355,6 @@ async function getTodos(){
 }
 
 const todos = getTodos();
+console.log(todos);
 getTodos();
 
